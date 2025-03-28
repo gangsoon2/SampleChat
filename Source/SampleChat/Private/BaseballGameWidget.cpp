@@ -1,4 +1,4 @@
-#include "BaseballGameWidget.h"
+ï»¿#include "BaseballGameWidget.h"
 #include "NumberBaseballGameMode.h"
 #include "BaseballGameState.h"
 #include "BaseballPlayerController.h"
@@ -63,7 +63,7 @@ void UBaseballGameWidget::UpdateTurnIndicator()
     {
         if (ABaseballGameState* GS = GetWorld()->GetGameState<ABaseballGameState>())
         {
-            TurnIndicatorText->SetText(FText::FromString(FString::Printf(TEXT("ÇöÀç Â÷·Ê: %s"), *GS->CurrentTurn)));
+            TurnIndicatorText->SetText(FText::FromString(FString::Printf(TEXT("í˜„ì¬ ì°¨ë¡€: %s"), *GS->CurrentTurn)));
         }
     }
 }

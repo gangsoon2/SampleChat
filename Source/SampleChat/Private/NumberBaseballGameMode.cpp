@@ -103,17 +103,26 @@ void ANumberBaseballGameMode::CheckEndCondition()
     ABaseballGameState* GS = GetGameState<ABaseballGameState>();
     if (!GS) return;
 
-    bool bHostOut = PlayerAttempts["Host"] >= 3;
-    bool bGuestOut = PlayerAttempts["Guest"] >= 3;
+    int32 HostTries = PlayerAttempts["Host"];
+    int32 GuestTries = PlayerAttempts["Guest"];
 
-    if (bHostOut && !bGuestOut)
-        GS->SetGameMessage(TEXT("Guest Won!! 다시 게임이 시작됐다."));
-    else if (!bHostOut && bGuestOut)
-        GS->SetGameMessage(TEXT("Host Won!! 다시 게임이 시작됐다."));
-    else if (bHostOut && bGuestOut)
-        GS->SetGameMessage(TEXT("무승부군. 다시 게임을 시작하지"));
-    else
+    bool bHostOut = HostTries >= 3;
+    bool bGuestOut = GuestTries >= 3;
+
+    if (!bHostOut && !bGuestOut)
         return;
 
-    RestartGame();
+    if (bHostOut && bGuestOut)
+    {
+        GS->SetGameMessage(TEXT("무승부군. 다시 게임을 시작하지"));
+        RestartGame();
+        return;
+    }
+
+    if (bHostOut && !bGuestOut)
+        return;
+
+    if (!bHostOut && bGuestOut)
+        return;
 }
+
