@@ -1,4 +1,4 @@
-# SampleChat
+# 텍스트 야구 겜
 
 [ 사용 소스파일 ]
 - BaseballGameState
