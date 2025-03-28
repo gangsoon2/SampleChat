@@ -14,15 +14,20 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define SAMPLECHAT_BaseballGameState_generated_h
 
-#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_10_DELEGATE \
+#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_8_DELEGATE \
 SAMPLECHAT_API void FOnGameMessageChanged_DelegateWrapper(const FMulticastScriptDelegate& OnGameMessageChanged);
 
 
-#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_9_DELEGATE \
+SAMPLECHAT_API void FOnTurnChanged_DelegateWrapper(const FMulticastScriptDelegate& OnTurnChanged);
+
+
+#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execOnRep_CurrentTurn); \
 	DECLARE_FUNCTION(execOnRep_GameMessage);
 
 
-#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABaseballGameState(); \
 	friend struct Z_Construct_UClass_ABaseballGameState_Statics; \
@@ -33,11 +38,12 @@ public: \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \
 		CurrentGameMessage=NETFIELD_REP_START, \
-		NETFIELD_REP_END=CurrentGameMessage	}; \
+		CurrentTurn, \
+		NETFIELD_REP_END=CurrentTurn	}; \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
-#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	ABaseballGameState(ABaseballGameState&&); \
@@ -49,13 +55,13 @@ public: \
 	NO_API virtual ~ABaseballGameState();
 
 
-#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_12_PROLOG
-#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_15_GENERATED_BODY \
+#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_11_PROLOG
+#define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_15_INCLASS_NO_PURE_DECLS \
-	FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_15_ENHANCED_CONSTRUCTORS \
+	FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_14_INCLASS_NO_PURE_DECLS \
+	FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameState_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -12,7 +12,10 @@ void UBaseballGameWidget::NativeConstruct()
     if (ABaseballGameState* GS = GetWorld()->GetGameState<ABaseballGameState>())
     {
         GS->OnGameMessageChanged.AddDynamic(this, &UBaseballGameWidget::UpdateGameMessage);
+        GS->OnTurnChanged.AddDynamic(this, &UBaseballGameWidget::UpdateTurnIndicator);
+
         UpdateGameMessage();
+        UpdateTurnIndicator();
     }
 
     if (ChatInputBox)
@@ -51,5 +54,16 @@ void UBaseballGameWidget::FocusChatInputBox()
     if (ChatInputBox)
     {
         FSlateApplication::Get().SetKeyboardFocus(ChatInputBox->TakeWidget(), EFocusCause::SetDirectly);
+    }
+}
+
+void UBaseballGameWidget::UpdateTurnIndicator()
+{
+    if (TurnIndicatorText)
+    {
+        if (ABaseballGameState* GS = GetWorld()->GetGameState<ABaseballGameState>())
+        {
+            TurnIndicatorText->SetText(FText::FromString(FString::Printf(TEXT("ÇöÀç Â÷·Ê: %s"), *GS->CurrentTurn)));
+        }
     }
 }

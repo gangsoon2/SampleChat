@@ -16,6 +16,8 @@ protected:
     virtual void BeginPlay() override;
 
 public:
+    ABaseballPlayerController();
+
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI")
     TSubclassOf<UUserWidget> BaseballGameWidgetClass;
 
@@ -24,8 +26,13 @@ public:
 
     UUserWidget* ChatInputWidget;
 
+    UFUNCTION(Server, Reliable)
+    void Server_SendChatMessage(const FString& Message);
+
     UFUNCTION(BlueprintCallable)
     void OnChatMessageReceived(const FString& Message);
+
+    bool bReplicates;
 
 private:
     UPROPERTY()

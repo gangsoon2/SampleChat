@@ -15,6 +15,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define SAMPLECHAT_BaseballGameWidget_generated_h
 
 #define FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameWidget_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execUpdateTurnIndicator); \
 	DECLARE_FUNCTION(execFocusChatInputBox); \
 	DECLARE_FUNCTION(execUpdateGameMessage); \
 	DECLARE_FUNCTION(execOnTextCommitted);

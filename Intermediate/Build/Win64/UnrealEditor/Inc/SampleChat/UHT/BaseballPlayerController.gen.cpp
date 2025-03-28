@@ -63,12 +63,66 @@ DEFINE_FUNCTION(ABaseballPlayerController::execOnChatMessageReceived)
 }
 // End Class ABaseballPlayerController Function OnChatMessageReceived
 
+// Begin Class ABaseballPlayerController Function Server_SendChatMessage
+struct BaseballPlayerController_eventServer_SendChatMessage_Parms
+{
+	FString Message;
+};
+static const FName NAME_ABaseballPlayerController_Server_SendChatMessage = FName(TEXT("Server_SendChatMessage"));
+void ABaseballPlayerController::Server_SendChatMessage(const FString& Message)
+{
+	BaseballPlayerController_eventServer_SendChatMessage_Parms Parms;
+	Parms.Message=Message;
+	UFunction* Func = FindFunctionChecked(NAME_ABaseballPlayerController_Server_SendChatMessage);
+	ProcessEvent(Func,&Parms);
+}
+struct Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/BaseballPlayerController.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Message_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStrPropertyParams NewProp_Message;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::NewProp_Message = { "Message", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(BaseballPlayerController_eventServer_SendChatMessage_Parms, Message), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Message_MetaData), NewProp_Message_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::NewProp_Message,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABaseballPlayerController, nullptr, "Server_SendChatMessage", nullptr, nullptr, Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::PropPointers), sizeof(BaseballPlayerController_eventServer_SendChatMessage_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00220CC0, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::Function_MetaDataParams), Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::Function_MetaDataParams) };
+static_assert(sizeof(BaseballPlayerController_eventServer_SendChatMessage_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(ABaseballPlayerController::execServer_SendChatMessage)
+{
+	P_GET_PROPERTY(FStrProperty,Z_Param_Message);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->Server_SendChatMessage_Implementation(Z_Param_Message);
+	P_NATIVE_END;
+}
+// End Class ABaseballPlayerController Function Server_SendChatMessage
+
 // Begin Class ABaseballPlayerController
 void ABaseballPlayerController::StaticRegisterNativesABaseballPlayerController()
 {
 	UClass* Class = ABaseballPlayerController::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "OnChatMessageReceived", &ABaseballPlayerController::execOnChatMessageReceived },
+		{ "Server_SendChatMessage", &ABaseballPlayerController::execServer_SendChatMessage },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -81,9 +135,6 @@ struct Z_Construct_UClass_ABaseballPlayerController_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
-#endif
 		{ "HideCategories", "Collision Rendering Transformation" },
 		{ "IncludePath", "BaseballPlayerController.h" },
 		{ "ModuleRelativePath", "Public/BaseballPlayerController.h" },
@@ -108,6 +159,7 @@ struct Z_Construct_UClass_ABaseballPlayerController_Statics
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_ABaseballPlayerController_OnChatMessageReceived, "OnChatMessageReceived" }, // 3755382392
+		{ &Z_Construct_UFunction_ABaseballPlayerController_Server_SendChatMessage, "Server_SendChatMessage" }, // 1727692938
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -156,7 +208,6 @@ template<> SAMPLECHAT_API UClass* StaticClass<ABaseballPlayerController>()
 {
 	return ABaseballPlayerController::StaticClass();
 }
-ABaseballPlayerController::ABaseballPlayerController(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 DEFINE_VTABLE_PTR_HELPER_CTOR(ABaseballPlayerController);
 ABaseballPlayerController::~ABaseballPlayerController() {}
 // End Class ABaseballPlayerController
@@ -165,10 +216,10 @@ ABaseballPlayerController::~ABaseballPlayerController() {}
 struct Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballPlayerController_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABaseballPlayerController, ABaseballPlayerController::StaticClass, TEXT("ABaseballPlayerController"), &Z_Registration_Info_UClass_ABaseballPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABaseballPlayerController), 1939010993U) },
+		{ Z_Construct_UClass_ABaseballPlayerController, ABaseballPlayerController::StaticClass, TEXT("ABaseballPlayerController"), &Z_Registration_Info_UClass_ABaseballPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABaseballPlayerController), 3419990032U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballPlayerController_h_1186729470(TEXT("/Script/SampleChat"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballPlayerController_h_3748106166(TEXT("/Script/SampleChat"),
 	Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballPlayerController_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -2,6 +2,11 @@
 #include "NumberBaseballGameMode.h"
 #include "Kismet/GameplayStatics.h"
 
+ABaseballPlayerController::ABaseballPlayerController()
+{
+    bReplicates = true;
+}
+
 void ABaseballPlayerController::BeginPlay()
 {
     Super::BeginPlay();
@@ -24,11 +29,27 @@ void ABaseballPlayerController::BeginPlay()
 
 void ABaseballPlayerController::OnChatMessageReceived(const FString& Message)
 {
-    ANumberBaseballGameMode* GM = Cast<ANumberBaseballGameMode>(UGameplayStatics::GetGameMode(this));
-    if (GM)
+    if (HasAuthority())
     {
-        GM->HandleChatCommand("Host", Message);
+        ANumberBaseballGameMode* GM = Cast<ANumberBaseballGameMode>(UGameplayStatics::GetGameMode(this));
+        if (GM)
+        {
+            FString ChatRole = IsLocalController() ? "Host" : "Guest";
+            GM->HandleChatCommand(ChatRole, Message);
+        }
+    }
+    else
+    {
+        Server_SendChatMessage(Message);
     }
 }
 
-
+void ABaseballPlayerController::Server_SendChatMessage_Implementation(const FString& Message)
+{
+    ANumberBaseballGameMode* GM = Cast<ANumberBaseballGameMode>(UGameplayStatics::GetGameMode(this));
+    if (GM)
+    {
+        FString ChatRole = "Guest";
+        GM->HandleChatCommand(ChatRole, Message);
+    }
+}

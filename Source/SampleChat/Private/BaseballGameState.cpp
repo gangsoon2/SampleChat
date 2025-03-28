@@ -3,11 +3,7 @@
 ABaseballGameState::ABaseballGameState()
 {
     CurrentGameMessage = "";
-}
-
-void ABaseballGameState::OnRep_GameMessage()
-{
-    OnGameMessageChanged.Broadcast();
+    CurrentTurn = "";
 }
 
 void ABaseballGameState::SetGameMessage(const FString& NewMessage)
@@ -16,9 +12,26 @@ void ABaseballGameState::SetGameMessage(const FString& NewMessage)
     OnGameMessageChanged.Broadcast();
 }
 
+void ABaseballGameState::OnRep_GameMessage()
+{
+    OnGameMessageChanged.Broadcast();
+}
+
+void ABaseballGameState::SetCurrentTurn(const FString& NewTurn)
+{
+    CurrentTurn = NewTurn;
+    OnTurnChanged.Broadcast();
+}
+
+void ABaseballGameState::OnRep_CurrentTurn()
+{
+    OnTurnChanged.Broadcast();
+}
+
 void ABaseballGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
     DOREPLIFETIME(ABaseballGameState, CurrentGameMessage);
+    DOREPLIFETIME(ABaseballGameState, CurrentTurn);
 }

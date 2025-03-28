@@ -127,6 +127,35 @@ DEFINE_FUNCTION(UBaseballGameWidget::execUpdateGameMessage)
 }
 // End Class UBaseballGameWidget Function UpdateGameMessage
 
+// Begin Class UBaseballGameWidget Function UpdateTurnIndicator
+struct Z_Construct_UFunction_UBaseballGameWidget_UpdateTurnIndicator_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/BaseballGameWidget.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBaseballGameWidget_UpdateTurnIndicator_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UBaseballGameWidget, nullptr, "UpdateTurnIndicator", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBaseballGameWidget_UpdateTurnIndicator_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBaseballGameWidget_UpdateTurnIndicator_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UBaseballGameWidget_UpdateTurnIndicator()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBaseballGameWidget_UpdateTurnIndicator_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UBaseballGameWidget::execUpdateTurnIndicator)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->UpdateTurnIndicator();
+	P_NATIVE_END;
+}
+// End Class UBaseballGameWidget Function UpdateTurnIndicator
+
 // Begin Class UBaseballGameWidget
 void UBaseballGameWidget::StaticRegisterNativesUBaseballGameWidget()
 {
@@ -135,6 +164,7 @@ void UBaseballGameWidget::StaticRegisterNativesUBaseballGameWidget()
 		{ "FocusChatInputBox", &UBaseballGameWidget::execFocusChatInputBox },
 		{ "OnTextCommitted", &UBaseballGameWidget::execOnTextCommitted },
 		{ "UpdateGameMessage", &UBaseballGameWidget::execUpdateGameMessage },
+		{ "UpdateTurnIndicator", &UBaseballGameWidget::execUpdateTurnIndicator },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -163,15 +193,22 @@ struct Z_Construct_UClass_UBaseballGameWidget_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/BaseballGameWidget.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TurnIndicatorText_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/BaseballGameWidget.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameMessageText;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ChatInputBox;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_TurnIndicatorText;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UBaseballGameWidget_FocusChatInputBox, "FocusChatInputBox" }, // 4285710859
 		{ &Z_Construct_UFunction_UBaseballGameWidget_OnTextCommitted, "OnTextCommitted" }, // 674085021
 		{ &Z_Construct_UFunction_UBaseballGameWidget_UpdateGameMessage, "UpdateGameMessage" }, // 3787701443
+		{ &Z_Construct_UFunction_UBaseballGameWidget_UpdateTurnIndicator, "UpdateTurnIndicator" }, // 4141325569
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -181,9 +218,11 @@ struct Z_Construct_UClass_UBaseballGameWidget_Statics
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UBaseballGameWidget_Statics::NewProp_GameMessageText = { "GameMessageText", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseballGameWidget, GameMessageText), Z_Construct_UClass_UTextBlock_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameMessageText_MetaData), NewProp_GameMessageText_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UBaseballGameWidget_Statics::NewProp_ChatInputBox = { "ChatInputBox", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseballGameWidget, ChatInputBox), Z_Construct_UClass_UEditableTextBox_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ChatInputBox_MetaData), NewProp_ChatInputBox_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UBaseballGameWidget_Statics::NewProp_TurnIndicatorText = { "TurnIndicatorText", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseballGameWidget, TurnIndicatorText), Z_Construct_UClass_UTextBlock_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TurnIndicatorText_MetaData), NewProp_TurnIndicatorText_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UBaseballGameWidget_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseballGameWidget_Statics::NewProp_GameMessageText,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseballGameWidget_Statics::NewProp_ChatInputBox,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseballGameWidget_Statics::NewProp_TurnIndicatorText,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UBaseballGameWidget_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UBaseballGameWidget_Statics::DependentSingletons[])() = {
@@ -227,10 +266,10 @@ UBaseballGameWidget::~UBaseballGameWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UBaseballGameWidget, UBaseballGameWidget::StaticClass, TEXT("UBaseballGameWidget"), &Z_Registration_Info_UClass_UBaseballGameWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseballGameWidget), 578881854U) },
+		{ Z_Construct_UClass_UBaseballGameWidget, UBaseballGameWidget::StaticClass, TEXT("UBaseballGameWidget"), &Z_Registration_Info_UClass_UBaseballGameWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseballGameWidget), 799507574U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameWidget_h_1730296098(TEXT("/Script/SampleChat"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameWidget_h_3751127315(TEXT("/Script/SampleChat"),
 	Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_gangh_Downloads_SampleChat_SampleChat_Source_SampleChat_Public_BaseballGameWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

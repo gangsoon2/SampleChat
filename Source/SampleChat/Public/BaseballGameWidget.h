@@ -35,4 +35,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void FocusChatInputBox();
+
+	UFUNCTION()
+	void UpdateTurnIndicator();
+
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* TurnIndicatorText;
 };
